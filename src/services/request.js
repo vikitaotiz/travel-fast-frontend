@@ -41,16 +41,14 @@ export const postRequest = async (url, body) => {
 };
 
 export const signup = async (formData) => {
-  console.log(formData);
   const res = await postRequest('/signup', formData);
-  console.log('Signup: ', res.data.data);
   setHeaders(res.data.data.id);
   return res.data.data;
 };
 
 export const signIn = async (formData) => {
-  const res = await postRequest('/login', formData);
-  setHeaders(res.data.token);
+  const res = await postRequest('/signin', formData);
+  setHeaders(res.data.data.id);
   return res.data.data;
 };
 
