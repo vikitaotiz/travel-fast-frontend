@@ -6,7 +6,7 @@ import { getHeaders } from '../services/common';
 const Homepage = () => {
   const headers = getHeaders();
   if (headers) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/cars" />;
   }
   return (
     <div>

@@ -4,8 +4,8 @@ export const getHeaders = () => (
   localStorage.getItem(localStorageKey) ? JSON.parse(localStorage.getItem(localStorageKey)) : null
 );
 
-export const setHeaders = (token) => {
-  const body = { authorization: token };
+export const setHeaders = (id) => {
+  const body = { userId: id };
   localStorage.setItem(localStorageKey, JSON.stringify(body));
 };
 
