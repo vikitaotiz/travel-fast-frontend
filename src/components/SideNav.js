@@ -1,11 +1,8 @@
-import { useSelector } from 'react-redux';
 import { FaBars, FaHome, FaPen } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { selectNav } from '../reducers/navSlice';
+import { selectNav } from '../reducers/carSlice';
 
 const SideNav = () => {
-  const toggled = useSelector(selectNav);
-  console.log(toggled);
   return (
     <div className="s-layout__sidebar">
       <Link className="s-sidebar__trigger" to="#0">

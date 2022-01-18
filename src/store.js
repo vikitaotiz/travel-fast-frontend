@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './reducers/userSlice';
-import SideBarReducer from './reducers/navSlice';
+import CarReducer from './reducers/carSlice';
 
 export default configureStore({
   reducer: {
     user: userReducer,
-    nav: SideBarReducer,
+    cars: CarReducer,
   },
 });

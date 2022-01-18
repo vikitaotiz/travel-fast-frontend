@@ -62,10 +62,10 @@ export const logOut = async () => {
   }
 };
 
-export const fetchAppointments = async () => {
+export const fetchCars = async () => {
   try {
-    const res = await instance.get('/appointments');
-    return res.data;
+    const res = await instance.get('/cars');
+    return res.data.data;
   } catch (error) {
     return loginHandleError(error);
   }
