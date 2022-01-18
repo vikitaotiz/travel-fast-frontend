@@ -6,16 +6,19 @@ import Booking from '../pages/Booking';
 import Cars from '../pages/Cars';
 import Car from '../pages/Car';
 import Reservations from '../pages/Reservations';
+import ProtectedRoute from './ProtectedRoute';
 
 const App = () => (
   <Routes>
     <Route path="/" element={<Homepage />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
-    <Route exact path="/cars" element={<Cars />} />
-    <Route exact path="/cars/:carId" element={<Car />} />
-    <Route exact path="/cars/:cardId/booking" element={<Booking />} />
-    <Route path="reservations" element={<Reservations />} />
+    <Route element={<ProtectedRoute />}>
+      <Route exact path="/cars" element={<Cars />} />
+      <Route exact path="/cars/:carId" element={<Car />} />
+      <Route exact path="/cars/:cardId/booking" element={<Booking />} />
+      <Route path="reservations" element={<Reservations />} />
+    </Route>
   </Routes>
 );
 
