@@ -46,7 +46,7 @@ const AddCar = () => {
   };
   return (
     <div className="max-width">
-      <FormContainer title="New Car Form">
+      <FormContainer title="Reserve Car">
         <Form handleSubmit={handleSubmit(handleOnsubmit)}>
           <div className="form-group">
             <span>Car Name</span>
@@ -59,24 +59,14 @@ const AddCar = () => {
             <small className="text-danger">{errors?.description?.message}</small>
           </div>
           <div className="form-group">
-            <span>Car Image Url</span>
-            <input {...register('image')} type="text" className="form-control" id="image" name="image" />
-            <small className="text-danger">{errors?.image?.message}</small>
+            <span>Pick up date</span>
+            <input {...register('startDate')} type="datetime" className="form-control" id="startDate" name="startDate" />
+            <small className="text-danger">{errors?.startDate?.message}</small>
           </div>
           <div className="form-group">
-            <span>Seats</span>
-            <input {...register('seats')} type="number" className="form-control" id="seats" name="seats" />
-            <small className="text-danger">{errors?.seats?.message}</small>
-          </div>
-          <div className="form-group">
-            <span>Price</span>
-            <input {...register('price')} type="number" className="form-control" id="price" name="price" />
-            <small className="text-danger">{errors?.price?.message}</small>
-          </div>
-          <div className="form-group">
-            <span>Duration</span>
-            <input {...register('duration')} type="number" className="form-control" id="duration" name="duration" />
-            <small className="text-danger">{errors?.duration?.message}</small>
+            <span>Due Return Date</span>
+            <input {...register('endDate')} type="datetime" className="form-control" id="endDate" name="endDate" />
+            <small className="text-danger">{errors?.endDate?.message}</small>
           </div>
           <button type="submit" className="btn btn-primary mt-4">Submit</button>
         </Form>

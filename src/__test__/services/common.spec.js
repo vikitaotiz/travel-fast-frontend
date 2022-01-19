@@ -4,7 +4,7 @@ import {
 import { localStorageKey } from '../../services/constants';
 
 describe('Should store request headers values', () => {
-  const headers = { userId: 9};
+  const headers = { userId: 9 };
   test('should save the  headers in localstorage', () => {
     setHeaders(headers);
     expect(localStorage.getItem(localStorageKey)).toBeTruthy();
@@ -12,7 +12,7 @@ describe('Should store request headers values', () => {
   });
 
   test('should get the headers in localstorage', () => {
-    const headers = { userId: 9};
+    const headers = { userId: 9 };
 
     setHeaders(headers);
     const retrievedHeaders = getHeaders();

@@ -5,7 +5,8 @@ import Register from '../pages/Register';
 import Booking from '../pages/Booking';
 import Cars from '../pages/Cars';
 import Car from '../pages/Car';
-import Reservations from '../pages/AddCar';
+import Reservations from '../pages/Reservation';
+import ReserveCar from '../pages/Reserve';
 import ProtectedRoute from './ProtectedRoute';
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
       <Route exact path="/cars/:carId" element={<Car />} />
       <Route exact path="/cars/:cardId/booking" element={<Booking />} />
       <Route path="reservations" element={<Reservations />} />
+      <Route path="/reserve" element={<ReserveCar />} />
     </Route>
   </Routes>
 );

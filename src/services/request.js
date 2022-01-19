@@ -88,3 +88,12 @@ export const addCar = async (formData) => {
     return loginHandleError(error);
   }
 };
+
+export const getReservations = async (id) => {
+  try {
+    const res = await instance.get(`/reservations/${id}`);
+    return res.data.data;
+  } catch (error) {
+    return loginHandleError(error);
+  }
+};
