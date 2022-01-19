@@ -5,7 +5,7 @@ import Register from '../pages/Register';
 import Booking from '../pages/Booking';
 import Cars from '../pages/Cars';
 import Car from '../pages/Car';
-import Reservations from '../pages/Reservations';
+import Reservations from '../pages/AddCar';
 import ProtectedRoute from './ProtectedRoute';
 
 const App = () => (

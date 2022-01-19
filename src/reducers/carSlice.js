@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   cars: [],
+  car: {},
 };
 
 export const carSlice = createSlice({
@@ -12,11 +13,16 @@ export const carSlice = createSlice({
     getAllCars: (state, { payload }) => {
       state.cars = payload;
     },
+
+    getOneCar: (state, { payload }) => {
+      state.car = payload;
+    },
   },
 });
 
-export const { getAllCars } = carSlice.actions;
+export const { getAllCars, getOneCar } = carSlice.actions;
 
 export const selectCars = (state) => state.cars.cars;
+export const selectCar = (state) => state.cars.car;
 
 export default carSlice.reducer;

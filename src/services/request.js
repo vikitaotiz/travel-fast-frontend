@@ -71,6 +71,15 @@ export const fetchCars = async () => {
   }
 };
 
+export const fetchCar = async (id) => {
+  try {
+    const res = await instance.get(`/cars/${id}`);
+    return res.data.data;
+  } catch (error) {
+    return loginHandleError(error);
+  }
+};
+
 export const fetchAppointment = async (id = 2) => {
   try {
     const res = await instance.get(`/appointments/${id}`);
@@ -111,15 +120,6 @@ export const getUser = async () => {
 export const getCars = async () => {
   try {
     const res = await instance.get('/cars');
-    return res.data;
-  } catch (error) {
-    return loginHandleError(error);
-  }
-};
-
-export const fetchCar = async (id) => {
-  try {
-    const res = await instance.get(`/cars/${id}`);
     return res.data;
   } catch (error) {
     return loginHandleError(error);

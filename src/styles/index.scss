@@ -7,7 +7,11 @@
 @import './sidebar.scss';
 
 * {
-  font-family: 'Helvetica Neue', sans-serif !important;
+  font-family: 'sans-serif', sans-serif !important;
+}
+
+img {
+  max-width: 100%;
 }
 
 .page {
@@ -397,6 +401,26 @@ img.car-image {
   margin: 0 2px;
 }
 
-.page-header {
+.car-main-image {
+  width: 66.7%;
+}
 
+.car-info {
+  width: 33.3%;
+
+  h3 {
+    color: #97BF0F;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 42em) {
+  .car-info {
+    margin-top: 22px;
+    width: 100%;
+  }
+
+  .car-main-image {
+    width: 100%;
+  }
 }
