@@ -22,7 +22,7 @@ const Cars = () => {
   return (
     <div className="page">
       <div className="headers">
-        <h1 className="page-header">Trending Cars</h1>
+        <h1 className="page-header">Available Cars</h1>
         <p className="fst-italic">One stop car purchase.</p>
       </div>
       <Carousel cars={cars} />

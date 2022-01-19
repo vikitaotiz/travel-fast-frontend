@@ -7,5 +7,3 @@ export const LOADING = 'LOADING';
 // export const LOGIN_USER = 'LOGIN_USER';
 // export const REGISTER_USER = 'REGISTER_USER';
 // export const CREATE_READING = 'CREATE_READING';
-// export const CREATE_APPOINTMENT = 'CREATE_APPOINTMENT';
-// export const GET_APPOINTMENTS = 'GET_APPOINTMENTS';

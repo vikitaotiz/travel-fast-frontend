@@ -12,7 +12,7 @@ const Homepage = () => {
     <div>
       <div className="homepage">
         <nav className="d-flex px-5 px-sm-2 justify-content-between align-items-center homepage__nav">
-          <Link className="logo" to="/">TeeRentals</Link>
+          <Link className="logo" to="/">TravelFast</Link>
           <div className="d-flex">
             <Link className="me-2 btn btn-info reg-btn" to="/register">Register</Link>
             <Link className="btn btn-info" to="/login">Login</Link>
