@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 function FormContainer({ title, children }) {
   return (
@@ -11,17 +10,6 @@ function FormContainer({ title, children }) {
           <div className="px-3">
             {children}
           </div>
-          {title.toLowerCase() === 'register' ? (
-            <div className="my-3 px-3">
-              <span>Already have an account?</span>
-              <Link className="ml-2" to="/login">Login</Link>
-            </div>
-          ) : (
-            <div className="my-3 px-3 form__footer">
-              <span>Do not have an account?</span>
-              <Link className="ml-2" to="/register">Register</Link>
-            </div>
-          )}
         </div>
       </div>
     </div>

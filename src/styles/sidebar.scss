@@ -30,7 +30,7 @@
  }
 
  .s-layout__content {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     flex: 1;
@@ -47,8 +47,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 4em;
+    width: 34px;
+    height: 2em;
     background: #192b3c;
  }
 

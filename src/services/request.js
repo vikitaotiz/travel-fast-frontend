@@ -52,7 +52,7 @@ export const signIn = async (formData) => {
   return res.data.data;
 };
 
-export const logOut = async () => {
+export const logOut = () => {
   try {
     clearHeaders();
     toast.success('You have successfully logged out');
@@ -80,47 +80,10 @@ export const fetchCar = async (id) => {
   }
 };
 
-export const fetchAppointment = async (id = 2) => {
+export const addCar = async (formData) => {
   try {
-    const res = await instance.get(`/appointments/${id}`);
-    return res.data;
-  } catch (error) {
-    return loginHandleError(error);
-  }
-};
-
-export const addMeasure = async (formData) => {
-  try {
-    const res = await postRequest('/measures', formData);
-    return res.data;
-  } catch (error) {
-    return loginHandleError(error);
-  }
-};
-
-export const createAppointment = async (formData) => {
-  try {
-    const res = await postRequest('/appointments', formData);
-
-    return res.data;
-  } catch (error) {
-    return loginHandleError(error);
-  }
-};
-
-export const getUser = async () => {
-  try {
-    const res = await instance.get('/me');
-    return res.data;
-  } catch (error) {
-    return loginHandleError(error);
-  }
-};
-
-export const getCars = async () => {
-  try {
-    const res = await instance.get('/cars');
-    return res.data;
+    const res = await postRequest('/cars', formData);
+    return res.data.data;
   } catch (error) {
     return loginHandleError(error);
   }

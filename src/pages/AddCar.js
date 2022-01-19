@@ -9,16 +9,15 @@ import { useNavigate } from 'react-router';
 import FormContainer from './FormContainer';
 import Form from '../components/Form';
 import { loginSuccess } from '../reducers/userSlice';
-import { signIn } from '../services/request';
-import Header from '../components/Header';
+import { addCar } from '../services/request';
 
 const schema = yup.object().shape({
   name: yup.string().required('Car name is required'),
   image: yup.string().required('Car image is required'),
   description: yup.string().required('Car description is required'),
-  seats: yup.number().integer().min(3, 'Minimum of 3 seats must be available').required('Number of seats is required'),
-  price: yup.number().integer().min(1, 'Minimum price is 1 naira').required('Price is required'),
-  duration: yup.number().integer().min(1, 'Minimum minimum duration is an hour').required('Duration is required'),
+  seats: yup.number('Seats should be a number').integer().min(3, 'Minimum of 3 seats must be available').required('Number of seats is required'),
+  price: yup.number('Price should be a number').integer().min(1, 'Minimum price is 1 naira').required('Price is required'),
+  duration: yup.number('Duration should be a number').integer().min(1, 'Minimum minimum duration is an hour').required('Duration is required'),
 });
 
 const AddCar = () => {
@@ -30,12 +29,16 @@ const AddCar = () => {
   });
 
   const handleOnsubmit = async (userObj) => {
-    const { name, description, seats, price, duration, image } = userObj;
+    const {
+      name, description, seats, price, duration, image,
+    } = userObj;
 
     try {
-      const res = await signIn({ username });
+      const res = await addCar({
+        name, description, seats, price, duration, image,
+      });
       dispatch(loginSuccess(res));
-      toast.success('Welcome back');
+      toast.success('Car Added !!');
       history('/cars');
     } catch (error) {
       toast.error(error.response.data.message);
@@ -43,8 +46,7 @@ const AddCar = () => {
   };
   return (
     <div className="max-width">
-      <Header hide />
-      <FormContainer title="Login">
+      <FormContainer title="New Car Form">
         <Form handleSubmit={handleSubmit(handleOnsubmit)}>
           <div className="form-group">
             <span>Car Name</span>
@@ -73,7 +75,7 @@ const AddCar = () => {
           </div>
           <div className="form-group">
             <span>Duration</span>
-            <input {...register('price')} type="number" className="form-control" id="duration" name="duration" />
+            <input {...register('duration')} type="number" className="form-control" id="duration" name="duration" />
             <small className="text-danger">{errors?.duration?.message}</small>
           </div>
           <button type="submit" className="btn btn-primary mt-4">Submit</button>
