@@ -1,6 +1,8 @@
 # Travel Fast.
 This is a web application that enables users to book a reservation for a car.
 
+![travel-fast](https://user-images.githubusercontent.com/42869046/150423529-6c1c5c08-94c3-48cc-a612-c24383de48ed.PNG)
+
 ## Project Decription
 
 - Travel fast is built in two different apps with React and Redux for the front end and Ruby on Rails for the backend API. To use the app, a user logs in and is given access to the available cars. They have the options to add and reserve a car.
