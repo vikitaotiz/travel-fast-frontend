@@ -1,7 +1,18 @@
-# Car Rentals.
+# Travel Fast.
 This is a web application that enables users to book a reservation for a car.
 
+## Project Decription
+
+- Travel fast is built in two different apps with React and Redux for the front end and Ruby on Rails for the backend API. To use the app, a user logs in and is given access to the available cars. They have the options to add and reserve a car.
+
 #### [DEMO LINK](https://zen-lamport-220477.netlify.app/)
+
+#### [Backend](https://github.com/vikitaotiz/travel-fast-backend/)
+
+#### [Api Documentation](https://travel-fast-bk.herokuapp.com/)
+
+## Kanban board
+- [Kanban board link](https://github.com/vikitaotiz/travel-fast-frontend/projects/1)
 
 
 ### Production Dependencies
@@ -52,10 +63,36 @@ This is a web application that enables users to book a reservation for a car.
 - Run `npm install- You can access all the design info (color, typography, layouts) in this link:
 
 
-### To install dependencies
+### Getting Started
 
-Run  your server with npm run start
+## Instructions
+
+* Clone this repo with:
+
+    ```bash
+    git clone https://github.com/vikitaotiz/travel-fast-frontend.git
+    ```
+
+* Navigate to the folder/directory
+
+    ```bash
+    cd travel-fast-frontend-end
+    ```
+
+### Install
+
+```sh
+npm install
+```
+
+### Usage
+
+```sh
+npm start
+```
+
 Open http://localhost:3000/ in your browser.
+
 
 ### Testing
 
@@ -67,6 +104,11 @@ Open http://localhost:3000/ in your browser.
 - GitHub: [@Adewunmi97](https://github.com/Adewunmi97)
 - Twitter: [@ShonibareC](https://twitter.com/ShonibareC)
 - Linkedin: [Adewunmi Shonibare](https://www.linkedin.com/in/adewunmi97)
+
+👤 **Victor Otieno**
+
+- GitHub: [@githubhandle](https://github.com/vikitaotiz)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/victor-otieno-oluoch/)
 
 ## 🤝 Contributing
 
