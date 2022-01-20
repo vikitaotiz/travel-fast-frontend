@@ -16,7 +16,7 @@ img {
 
 .page {
   min-height: 100vh;
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .main {
@@ -36,6 +36,7 @@ $icon-bg-color: rgba(255, 255, 255, 0.05);
 $icon-size: 35px;
 
 @import '~react-pro-sidebar/dist/scss/styles.scss';
+
 body {
   margin: 0;
   height: 100vh;
@@ -52,50 +53,6 @@ body {
   display: flex;
   position: relative;
 
-  .btn-toggle {
-    cursor: pointer;
-    width: 35px;
-    height: 35px;
-    background: #353535;
-    color: #fff;
-    text-align: center;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    display: none;
-  }
-
-  .sidebar-btn-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .sidebar-btn {
-      transition: width 0.3s;
-      width: 150px;
-      padding: 1px 15px;
-      border-radius: 40px;
-      background: rgba(255, 255, 255, 0.05);
-      color: #adadad;
-      text-decoration: none;
-      margin: 0 auto;
-      height: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      span {
-        margin-left: 5px;
-        font-size: 13px;
-      }
-      &:hover {
-        color: $highlight-color;
-      }
-    }
-  }
-
   .collapsed {
     .sidebar-btn {
       display: inline-block;
@@ -110,80 +67,35 @@ body {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+
     header {
       margin-bottom: 40px;
       border-bottom: 1px solid #efefef;
+
       h1 {
         display: flex;
         align-items: center;
         transform: translateX(-20px);
       }
     }
-
-    footer {
-      margin-top: auto;
-      color: #888;
-      text-align: center;
-      a {
-        text-decoration: none;
-        color: #888;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
   }
+
   .social-bagdes {
     margin-top: 10px;
+
     img {
       margin: 5px;
     }
   }
 
-  .block {
-    display: flex;
-    margin-bottom: 24px;
-    font-size: 14px;
-    color: #545454;
-    > span {
-      margin-left: 10px;
-    }
-  }
-
-  &.rtl {
-    direction: rtl;
-    text-align: right;
-
-    header {
-      h1 {
-        transform: translateX(20px);
-      }
-    }
-    .block {
-      direction: rtl;
-      > span {
-        margin-left: 0;
-        margin-right: 10px;
-      }
-    }
-    .sidebar-btn-wrapper {
-      .sidebar-btn {
-        span {
-          margin-left: 0;
-          margin-right: 5px;
-        }
-      }
-    }
-  }
-
   @media (max-width: 767.98px) {
-    overflow-x: hidden;
     header {
       h1 {
         font-size: 24px;
       }
     }
   }
+
   @media (max-width: $breakpoint-md) {
     .btn-toggle {
       display: flex;
@@ -202,25 +114,21 @@ body {
   font-size: 9px;
   letter-spacing: 1px;
   border-radius: 15px;
+
   &.red {
-    color: #ffffff;
+    color: #fff;
     background: #d63030;
   }
+
   &.gray {
-    color: #ffffff;
-    background: #777777;
+    color: #fff;
+    background: #777;
   }
+
   &.yellow {
-    color: #000000;
+    color: #000;
     background: #ffd331;
   }
-}
-
-.measurements {
-  max-width: 1600px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .header {
@@ -229,31 +137,17 @@ body {
   color: #fff;
 }
 
-.tabs,
-.measurement {
-  background-color: $light-gray;
-  height: calc(100vh - 140px);
-  overflow-y: auto;
+.date {
+  font-size: 1rem;
+  margin-bottom: 0;
 }
 
-.tab {
-  .tab-title {
-    background-color: $light-gray;
-    color: $dark-gray;
-  }
+.circle-range {
+  max-width: 40px;
+}
 
-  .date {
-    font-size: 1rem;
-    margin-bottom: 0;
-  }
-
-  .circle-range {
-    max-width: 40px;
-  }
-
-  .tab-content {
-    background-color: $white;
-  }
+.tab-content {
+  background-color: $white;
 }
 
 .charts {
@@ -261,60 +155,12 @@ body {
   margin-left: auto;
 }
 
-.measurement-heading {
-  background-color: $white;
-}
-
-.unit {
-  color: $dark-gray;
-  font-size: 12px;
-}
-
-.footer {
-  background-color: $dark-gray;
-  height: 70px;
-
-  .plus-icon {
-    font-size: 3rem;
-    color: white;
-    fill: white;
-
-    svg {
-      vertical-align: text-top;
-    }
-  }
-}
-
 .form-container__image {
   display: none;
 }
 
-.measure__form {
-  max-width: 420px;
-  margin: auto;
-
-  .form-container__image,
-  .form__footer {
-    display: none;
-  }
-
-  .form__wrapper {
-    width: 100%;
-  }
-}
-
 .fw-bolder {
   font-weight: bolder;
-}
-
-.measurement__card {
-  width: 46%;
-  text-align: right;
-  background-color: $white;
-
-  p {
-    width: 100%;
-  }
 }
 
 .max-width {
@@ -375,14 +221,15 @@ a {
 }
 
 img.car-image {
-  width:200px;
+  width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
   margin: auto;
 }
 
-.slick-slider .slick-prev:before, .slick-next:before {
+.slick-slider .slick-prev::before,
+.slick-next::before {
   color: black;
 }
 
@@ -414,7 +261,7 @@ img.car-image {
   width: 33.3%;
 
   h3 {
-    color: #97BF0F;
+    color: #97bf0f;
     font-weight: 700;
   }
 }
@@ -424,6 +271,7 @@ img.car-image {
     margin-top: 22px;
     width: 100%;
   }
+
   .max-width {
     max-width: 431px;
     margin: auto;
@@ -435,6 +283,11 @@ img.car-image {
 
   .page {
     max-width: 100%;
+  }
+
+  .page-wrapper {
+    max-width: 1600px;
+    margin: auto;
   }
 
   button.logout {
@@ -453,6 +306,7 @@ img.car-image {
         padding: 7px;
       }
     }
+
     .logo {
       font-size: 1.5em;
       margin-left: 0;

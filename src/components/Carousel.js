@@ -1,8 +1,23 @@
+/* eslint-disable camelcase */
+/* eslint-disable react/jsx-props-no-spreading */
 import Slider from 'react-slick';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllCars, selectCars } from '../reducers/carSlice';
+import { fetchCars } from '../services/request';
 
-const Carousel = ({ cars }) => {
+const Carousel = () => {
+  const dispatch = useDispatch();
+  const cars = useSelector(selectCars);
+  useEffect(() => {
+    const fetchAllCars = async () => {
+      const cars = await fetchCars();
+      dispatch(getAllCars(cars));
+    };
+    fetchAllCars();
+  }, []);
   const settings = {
     infinite: true,
     dots: false,
@@ -46,7 +61,7 @@ const Carousel = ({ cars }) => {
         }) => (
           <div key={created_at}>
             <Link to={`/cars/${id}`}>
-              <img className="car-image" src={image} />
+              <img className="car-image" src={image} alt={name} />
               <p className="car-model text-center">{name}</p>
               <p className="car-desc text-center">{description}</p>
               <div className="social-icons d-flex justify-center align-center">

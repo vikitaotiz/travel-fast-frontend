@@ -31,15 +31,12 @@ const Register = () => {
   });
 
   const handleFormSubmit = async (data) => {
-    console.log('Data', data);
-
     try {
       const res = await signup(data);
       dispatch(registerSuccess(res));
       history('/cars');
       toast.success('Account created successfully');
     } catch (error) {
-      console.log(error);
       clearHeaders();
       if (error.response.status === 422) {
         error.response.data.errors.full_messages.forEach((msg) => toast.error(msg));

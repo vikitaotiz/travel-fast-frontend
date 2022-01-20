@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useState, useEffect } from 'react';
 import { getReservations } from '../services/request';
 import { getHeaders } from '../services/common';
@@ -16,7 +17,7 @@ const Reservations = () => {
 
   return (
     <div className="">
-      <h3 className="text-center my-4">Reservations </h3>
+      <h3 className="text-center my-4 fw-bolder page-header">Reservations </h3>
       <table className="table table-bordered">
         <thead>
           <tr>
@@ -28,27 +29,23 @@ const Reservations = () => {
         </thead>
         <tbody>
           {reservations.map(({
-            start_date, end_date, car_id, city_id,
+            start_date, end_date, car_id, car_name, city,
           }) => (
             <tr key={car_id}>
-              <td>{city_id}</td>
-              <td>{car_id}</td>
-              <td>{new Date(start_date).toString()}</td>
-              <td>{new Date(end_date).toString()}</td>
+              <td>{city}</td>
+              <td>{car_name}</td>
+              <td>
+                {new Date(start_date).toDateString()}
+                {' '}
+                {new Date(start_date).toLocaleTimeString()}
+              </td>
+              <td>
+                {new Date(end_date).toDateString()}
+                {' '}
+                {new Date(end_date).toLocaleTimeString()}
+              </td>
             </tr>
           ))}
-
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
         </tbody>
       </table>
     </div>

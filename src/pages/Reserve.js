@@ -1,45 +1,54 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+/* eslint-disable camelcase */
+import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import FormContainer from './FormContainer';
 import Form from '../components/Form';
-import { loginSuccess } from '../reducers/userSlice';
-import { addCar } from '../services/request';
+import { reserveCar, fetchCars } from '../services/request';
+import { getHeaders } from '../services/common';
 
 const schema = yup.object().shape({
-  name: yup.string().required('Car name is required'),
-  image: yup.string().required('Car image is required'),
-  description: yup.string().required('Car description is required'),
-  seats: yup.number('Seats should be a number').integer().min(3, 'Minimum of 3 seats must be available').required('Number of seats is required'),
-  price: yup.number('Price should be a number').integer().min(1, 'Minimum price is 1 naira').required('Price is required'),
-  duration: yup.number('Duration should be a number').integer().min(1, 'Minimum minimum duration is an hour').required('Duration is required'),
+  car: yup.string().required('Car is required'),
+  city: yup.string().required('City is required'),
+  startDate: yup.date().required('Pick up date is required'),
+  endDate: yup.date().required('Due date is required'),
 });
 
-const AddCar = () => {
-  const dispatch = useDispatch();
+const ReserveForm = () => {
   const history = useNavigate();
+  const [cars, setCars] = useState([]);
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
   });
 
-  const handleOnsubmit = async (userObj) => {
+  useEffect(() => {
+    const getAllCars = async () => {
+      const res = await fetchCars();
+      setCars(res);
+    };
+
+    getAllCars();
+  }, []);
+
+  const handleOnsubmit = async (reservation) => {
+    const { userId } = getHeaders();
     const {
-      name, description, seats, price, duration, image,
-    } = userObj;
+      car, city, startDate, endDate,
+    } = reservation;
 
     try {
-      const res = await addCar({
-        name, description, seats, price, duration, image,
+      const res = await reserveCar({
+        car_id: car, city, start_date: startDate, end_date: endDate, user_id: userId,
       });
-      dispatch(loginSuccess(res));
-      toast.success('Car Added !!');
-      history('/cars');
+      if (res?.id) {
+        toast.success('Car Reserved');
+        history('/reservations');
+      }
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -49,23 +58,28 @@ const AddCar = () => {
       <FormContainer title="Reserve Car">
         <Form handleSubmit={handleSubmit(handleOnsubmit)}>
           <div className="form-group">
-            <span>Car Name</span>
-            <input {...register('name')} type="text" className="form-control" id="name" name="name" />
-            <small className="text-danger">{errors?.name?.message}</small>
+            <span>Car</span>
+            <select {...register('car')} defaultValue={null} id="car" name="car" className="form-select" aria-label="Select car">
+              <option className="car-li" value={null}>Choose car</option>
+              {cars?.map(({ name, id }) => (
+                <option key={id} className="car-li" value={id}>{name}</option>
+              ))}
+            </select>
+            <small className="text-danger">{errors?.car?.message}</small>
           </div>
           <div className="form-group">
-            <span>Car Description</span>
-            <input {...register('description')} type="text" className="form-control" id="description" name="description" />
-            <small className="text-danger">{errors?.description?.message}</small>
+            <span>City</span>
+            <input {...register('city')} type="text" className="form-control" id="city" name="city" />
+            <small className="text-danger">{errors?.city?.message}</small>
           </div>
           <div className="form-group">
             <span>Pick up date</span>
-            <input {...register('startDate')} type="datetime" className="form-control" id="startDate" name="startDate" />
+            <input {...register('startDate')} type="datetime-local" className="form-control" id="startDate" name="startDate" />
             <small className="text-danger">{errors?.startDate?.message}</small>
           </div>
           <div className="form-group">
             <span>Due Return Date</span>
-            <input {...register('endDate')} type="datetime" className="form-control" id="endDate" name="endDate" />
+            <input {...register('endDate')} type="datetime-local" className="form-control" id="endDate" name="endDate" />
             <small className="text-danger">{errors?.endDate?.message}</small>
           </div>
           <button type="submit" className="btn btn-primary mt-4">Submit</button>
@@ -75,4 +89,4 @@ const AddCar = () => {
   );
 };
 
-export default AddCar;
+export default ReserveForm;

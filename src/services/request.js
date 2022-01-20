@@ -89,6 +89,15 @@ export const addCar = async (formData) => {
   }
 };
 
+export const reserveCar = async (formData) => {
+  try {
+    const res = await postRequest('/reservations', formData);
+    return res?.data?.data;
+  } catch (error) {
+    return loginHandleError(error);
+  }
+};
+
 export const getReservations = async (id) => {
   try {
     const res = await instance.get(`/reservations/${id}`);
