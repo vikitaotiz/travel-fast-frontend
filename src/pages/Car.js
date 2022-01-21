@@ -1,8 +1,7 @@
-import { useNavigate } from 'react-router';
-// import { toast } from 'react-toastify';
+/* eslint-disable no-param-reassign */
+import { useNavigate, useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
 import { getOneCar, selectCar } from '../reducers/carSlice';
 import { fetchCars, deleteCar } from '../services/request';
@@ -31,9 +30,9 @@ const Car = () => {
       }
     } catch (error) {
       event.target.disabled = false;
-      toast.error(error.message)
+      toast.error(error.message);
     }
-  }
+  };
 
   return (
     <div className="d-block d-md-flex w-100 px-3">
@@ -61,7 +60,7 @@ const Car = () => {
           </li>
         </ul>
         <div className="d-flex justify-content-end mt-3">
-          <button onClick={handleDeleteBtnClick} role="button" type='button' className='btn btn-danger'>Delete</button>
+          <button onClick={handleDeleteBtnClick} type="button" className="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>

@@ -91,8 +91,8 @@ export const addCar = async (formData) => {
 
 export const deleteCar = async (id) => {
   try {
-    const res = await postRequest('/delete_car', { id });
-    return res.data.data;
+    const res = await postRequest('/delete_car', { car_id: id });
+    return res.data;
   } catch (error) {
     return loginHandleError(error);
   }

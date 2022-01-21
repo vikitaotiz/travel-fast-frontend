@@ -21,7 +21,9 @@ const schema = yup.object().shape({
 const ReserveForm = () => {
   const history = useNavigate();
   const [cars, setCars] = useState([]);
-  const { register, handleSubmit, formState: { errors }, getValues } = useForm({
+  const {
+    register, handleSubmit, formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
   });
@@ -48,10 +50,8 @@ const ReserveForm = () => {
       submitBtn.ariaDisabled = false;
       submitBtn.disabled = false;
       return toast.error('Invalid pick up date');
-
     }
-    console.log((dueDate - reserveDate ), (dueDate - reserveDate ) / 60000);
-    if (dueDate < currentDate || ((dueDate - reserveDate ) / 60000) < 15) {
+    if (dueDate < currentDate || ((dueDate - reserveDate) / 60000) < 15) {
       submitBtn.ariaDisabled = false;
       submitBtn.disabled = false;
       return toast.error('Invalid due date. Due date must be at least 15 minutes away from pick up date');
@@ -60,18 +60,18 @@ const ReserveForm = () => {
     submitBtn.ariaDisabled = true;
     submitBtn.disabled = true;
     try {
-      // const res = await reserveCar({
-      //   car_id: car, city, start_date: startDate, end_date: endDate, user_id: userId,
-      // });
-      // if (res?.id) {
-      //   toast.success('Car Reserved');
-      //   history('/reservations');
-      // }
-      console.log(errors, currentDate, reserveDate, dueDate, '!!!');
+      const res = await reserveCar({
+        car_id: car, city, start_date: startDate, end_date: endDate, user_id: userId,
+      });
+      if (res?.id) {
+        toast.success('Car Reserved');
+        return history('/reservations');
+      }
+      return null;
     } catch (error) {
       submitBtn.ariaDisabled = false;
       submitBtn.disabled = false;
-      toast.error(error.response.data.message);
+      return toast.error(error.response.data.message);
     }
   };
   return (
