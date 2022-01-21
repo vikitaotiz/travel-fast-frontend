@@ -14,15 +14,8 @@ import { getHeaders } from '../services/common';
 const schema = yup.object().shape({
   car: yup.string().required('Car is required'),
   city: yup.string().required('City is required'),
-  startDate: yup.date().required('Pick up date is required').min(new Date(), 'Choose a future pick up date'),
-  endDate: yup.date().required('Due date is required')
-  .when('startDate', (startDate) => {
-    if (startDate) {
-        return Yup.date()
-            .min(new Date(Date.now(startDate) + (60000 * 15)), 'Due Date should be at least 15 minutes from pick up date')
-            .typeError('Due date is required')
-    }
-  }),
+  startDate: yup.date().required('Pick up date is required'),
+  endDate: yup.date().required('Due date is required'),
 });
 
 const ReserveForm = () => {
@@ -47,18 +40,23 @@ const ReserveForm = () => {
     const {
       car, city, startDate, endDate,
     } = reservation;
-    // const currentDate = new Date();
-    // const reserveDate = new Date(startDate);
-    // const dueDate = new Date(endDate);
-    // if (currentDate < reserveDate || reserveDate < dueDate) {
-    //   errors.startDate.message = 'Invalid pick up date'
-    // }
-
-    // if (currentDate < dueDate || ((dueDate - reserveDate ) / 60000) < 15) {
-    //   errors.endDate.message = 'Invalid due date. Due date must be at least 15 minutes away from pick up date'
-    // }
-
     const submitBtn = document.querySelector('button[type="submit"]');
+    const currentDate = new Date();
+    const reserveDate = new Date(startDate);
+    const dueDate = new Date(endDate);
+    if (reserveDate < currentDate || reserveDate > dueDate) {
+      submitBtn.ariaDisabled = false;
+      submitBtn.disabled = false;
+      return toast.error('Invalid pick up date');
+
+    }
+    console.log((dueDate - reserveDate ), (dueDate - reserveDate ) / 60000);
+    if (dueDate < currentDate || ((dueDate - reserveDate ) / 60000) < 15) {
+      submitBtn.ariaDisabled = false;
+      submitBtn.disabled = false;
+      return toast.error('Invalid due date. Due date must be at least 15 minutes away from pick up date');
+    }
+
     submitBtn.ariaDisabled = true;
     submitBtn.disabled = true;
     try {
@@ -69,7 +67,7 @@ const ReserveForm = () => {
       //   toast.success('Car Reserved');
       //   history('/reservations');
       // }
-      console.log(errors);
+      console.log(errors, currentDate, reserveDate, dueDate, '!!!');
     } catch (error) {
       submitBtn.ariaDisabled = false;
       submitBtn.disabled = false;
