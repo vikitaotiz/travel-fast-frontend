@@ -14,14 +14,21 @@ import { getHeaders } from '../services/common';
 const schema = yup.object().shape({
   car: yup.string().required('Car is required'),
   city: yup.string().required('City is required'),
-  startDate: yup.date().required('Pick up date is required'),
-  endDate: yup.date().required('Due date is required'),
+  startDate: yup.date().required('Pick up date is required').min(new Date(), 'Choose a future pick up date'),
+  endDate: yup.date().required('Due date is required')
+  .when('startDate', (startDate) => {
+    if (startDate) {
+        return Yup.date()
+            .min(new Date(Date.now(startDate) + (60000 * 15)), 'Due Date should be at least 15 minutes from pick up date')
+            .typeError('Due date is required')
+    }
+  }),
 });
 
 const ReserveForm = () => {
   const history = useNavigate();
   const [cars, setCars] = useState([]);
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors }, getValues } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
   });
@@ -40,17 +47,29 @@ const ReserveForm = () => {
     const {
       car, city, startDate, endDate,
     } = reservation;
+    // const currentDate = new Date();
+    // const reserveDate = new Date(startDate);
+    // const dueDate = new Date(endDate);
+    // if (currentDate < reserveDate || reserveDate < dueDate) {
+    //   errors.startDate.message = 'Invalid pick up date'
+    // }
+
+    // if (currentDate < dueDate || ((dueDate - reserveDate ) / 60000) < 15) {
+    //   errors.endDate.message = 'Invalid due date. Due date must be at least 15 minutes away from pick up date'
+    // }
+
     const submitBtn = document.querySelector('button[type="submit"]');
     submitBtn.ariaDisabled = true;
     submitBtn.disabled = true;
     try {
-      const res = await reserveCar({
-        car_id: car, city, start_date: startDate, end_date: endDate, user_id: userId,
-      });
-      if (res?.id) {
-        toast.success('Car Reserved');
-        history('/reservations');
-      }
+      // const res = await reserveCar({
+      //   car_id: car, city, start_date: startDate, end_date: endDate, user_id: userId,
+      // });
+      // if (res?.id) {
+      //   toast.success('Car Reserved');
+      //   history('/reservations');
+      // }
+      console.log(errors);
     } catch (error) {
       submitBtn.ariaDisabled = false;
       submitBtn.disabled = false;

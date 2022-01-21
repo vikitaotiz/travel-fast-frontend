@@ -7,6 +7,7 @@ import Cars from '../pages/Cars';
 import Car from '../pages/Car';
 import Reservations from '../pages/Reservation';
 import ReserveCar from '../pages/Reserve';
+import NewCar from '../pages/NewCar';
 import ProtectedRoute from './ProtectedRoute';
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
       <Route exact path="/cars/:cardId/booking" element={<Booking />} />
       <Route path="reservations" element={<Reservations />} />
       <Route path="/reserve" element={<ReserveCar />} />
+      <Route path="/new-car" element={<NewCar />} />
     </Route>
   </Routes>
 );

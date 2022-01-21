@@ -26,6 +26,12 @@ const SideNav = () => (
           </Link>
         </li>
         <li>
+          <Link className="s-sidebar__nav-link" to="/new-car">
+            <FaPen />
+            <em>Add Car</em>
+          </Link>
+        </li>
+        <li>
           <Link className="s-sidebar__nav-link" to="/reserve">
             <FaPen />
             <em>Reserve Car</em>
