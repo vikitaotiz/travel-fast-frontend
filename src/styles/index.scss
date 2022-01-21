@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import '~bootstrap/scss/bootstrap.scss';
+@import 'react-pro-sidebar/dist/css/styles.css';
+@import './variables.scss';
+@import './Homepage.scss';
+@import './Register.scss';
+@import './sidebar.scss';
+
+* {
+  font-family: 'sans-serif', sans-serif !important;
+}
+
+img {
+  max-width: 100%;
+}
+
+.page {
+  min-height: 100vh;
+  max-width: 100%;
+}
+
+.main {
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+$sidebar-bg-color: #0c1e35;
+$submenu-bg-color: rgba(255, 255, 255, 0.05);
+$submenu-bg-color-collapsed: rgba(#0c1e35, 0.95);
+$sidebar-color: #b3b8d4;
+$highlight-color: #dee2ec;
+$icon-bg-color: rgba(255, 255, 255, 0.05);
+$icon-size: 35px;
+
+@import '~react-pro-sidebar/dist/scss/styles.scss';
+
+body {
+  margin: 0;
+  height: 100vh;
+  color: #353535;
+  font-family: 'Roboto', sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  position: relative;
+
+  .collapsed {
+    .sidebar-btn {
+      display: inline-block;
+      line-height: 40px;
+      padding: 0;
+    }
+  }
+
+  main {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid #efefef;
+
+      h1 {
+        display: flex;
+        align-items: center;
+        transform: translateX(-20px);
+      }
+    }
+  }
+
+  .social-bagdes {
+    margin-top: 10px;
+
+    img {
+      margin: 5px;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    header {
+      h1 {
+        font-size: 24px;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    .btn-toggle {
+      display: flex;
+    }
+
+    &.rtl {
+      .btn-toggle {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+.badge {
+  padding: 3px 6px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  border-radius: 15px;
+
+  &.red {
+    color: #fff;
+    background: #d63030;
+  }
+
+  &.gray {
+    color: #fff;
+    background: #777;
+  }
+
+  &.yellow {
+    color: #000;
+    background: #ffd331;
+  }
+}
+
+.header {
+  min-height: 70px;
+  background-color: $light-blue;
+  color: #fff;
+}
+
+.date {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.circle-range {
+  max-width: 40px;
+}
+
+.tab-content {
+  background-color: $white;
+}
+
+.charts {
+  max-width: 70px;
+  margin-left: auto;
+}
+
+.form-container__image {
+  display: none;
+}
+
+.fw-bolder {
+  font-weight: bolder;
+}
+
+.max-width {
+  max-width: none;
+  width: 80%;
+  margin: auto;
+}
+
+.btn-primary {
+  background-color: $light-blue;
+}
+
+a {
+  color: $text-color;
+  text-decoration: none;
+
+  &:visited {
+    color: $text-color;
+  }
+}
+
+.logout-btn {
+  border: none;
+  bottom: 7px;
+  position: absolute;
+  right: 10px;
+  background: transparent;
+}
+
+.carLinks,
+.car_card {
+  width: calc(25% - 10px);
+  margin: 5px;
+}
+
+.card-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.car_banner {
+  display: flex;
+  justify-content: center;
+}
+
+.car_make,
+.car_model,
+.car_year {
+  text-transform: capitalize;
+  margin-right: 15px;
+  text-align: center;
+}
+
+.car_description {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+img.car-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: auto;
+}
+
+.slick-slider .slick-prev::before,
+.slick-next::before {
+  color: black;
+}
+
+.headers,
+.carousel-wrapper {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.social-icons {
+  justify-content: center;
+}
+
+.social-icons svg {
+  width: 29px;
+  height: 29px;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  padding: 2px;
+  outline: none;
+  margin: 0 2px;
+}
+
+.car-main-image {
+  width: 66.7%;
+}
+
+.car-info {
+  width: 33.3%;
+
+  h3 {
+    color: #97bf0f;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 42em) {
+  .car-info {
+    margin-top: 22px;
+    width: 100%;
+  }
+
+  .max-width {
+    max-width: 431px;
+    margin: auto;
+  }
+
+  .car-main-image {
+    width: 100%;
+  }
+
+  .page {
+    max-width: 100%;
+  }
+
+  .page-wrapper {
+    max-width: 1600px;
+    margin: auto;
+  }
+
+  button.logout {
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 35px;
+    padding: 3px;
+  }
+
+  .homepage {
+    nav {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+
+      .btn-info {
+        padding: 7px;
+      }
+    }
+
+    .logo {
+      font-size: 1.5em;
+      margin-left: 0;
+    }
+  }
+}
