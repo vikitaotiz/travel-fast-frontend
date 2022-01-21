@@ -26,13 +26,17 @@ const Login = () => {
 
   const handleOnsubmit = async (userObj) => {
     const { username } = userObj;
-
+    const submitBtn = document.querySelector('button[type="submit"]');
+    submitBtn.ariaDisabled = true;
+    submitBtn.disabled = true;
     try {
       const res = await signIn({ username });
       dispatch(loginSuccess(res));
       toast.success('Welcome back');
       history('/cars');
     } catch (error) {
+      submitBtn.ariaDisabled = false;
+      submitBtn.disabled = false;
       toast.error(error.response.data.message);
     }
   };

@@ -40,7 +40,9 @@ const ReserveForm = () => {
     const {
       car, city, startDate, endDate,
     } = reservation;
-
+    const submitBtn = document.querySelector('button[type="submit"]');
+    submitBtn.ariaDisabled = true;
+    submitBtn.disabled = true;
     try {
       const res = await reserveCar({
         car_id: car, city, start_date: startDate, end_date: endDate, user_id: userId,
@@ -50,6 +52,8 @@ const ReserveForm = () => {
         history('/reservations');
       }
     } catch (error) {
+      submitBtn.ariaDisabled = false;
+      submitBtn.disabled = false;
       toast.error(error.response.data.message);
     }
   };

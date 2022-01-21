@@ -31,12 +31,18 @@ const Register = () => {
   });
 
   const handleFormSubmit = async (data) => {
+    const submitBtn = document.querySelector('button[type="submit"]');
+    submitBtn.ariaDisabled = true;
+    submitBtn.disabled = true;
+
     try {
       const res = await signup(data);
       dispatch(registerSuccess(res));
       history('/cars');
       toast.success('Account created successfully');
     } catch (error) {
+      submitBtn.ariaDisabled = false;
+      submitBtn.disabled = false;
       clearHeaders();
       if (error.response.status === 422) {
         error.response.data.errors.full_messages.forEach((msg) => toast.error(msg));
