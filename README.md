@@ -21,6 +21,14 @@ This is a web application that enables users to book a reservation for a car.
 ## Kanban board
 - [Kanban board link](https://github.com/vikitaotiz/travel-fast-frontend/projects/1)
 
+![Screenshot of the initial state of Kanban board](https://user-images.githubusercontent.com/60876346/150587080-87df36b8-e22f-43f9-bcad-4ef07a6d2195.png)
+
+![Screenshot of the final state of Kanban board](https://user-images.githubusercontent.com/60876346/150587581-1397c485-1172-4e41-a00c-387203a9b905.png)
+
+
+## Number of team members
+2
+
 
 ### Production Dependencies
 
