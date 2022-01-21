@@ -15,6 +15,9 @@ This is a web application that enables users to book a reservation for a car.
 
 #### [Backend Pull Request](https://github.com/vikitaotiz/travel-fast-backend/pull/11)
 
+### Backend Landing (Api Docs)
+![api-docs](https://user-images.githubusercontent.com/42869046/150472251-486c71c6-2db0-4914-be03-a79ac923047b.PNG)
+
 ## Kanban board
 - [Kanban board link](https://github.com/vikitaotiz/travel-fast-frontend/projects/1)
 
