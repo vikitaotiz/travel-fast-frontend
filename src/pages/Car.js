@@ -1,15 +1,16 @@
-// import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router';
 // import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-// import { FaBars } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import { getOneCar, selectCar } from '../reducers/carSlice';
-import { fetchCars } from '../services/request';
+import { fetchCars, deleteCar } from '../services/request';
 
 const Car = () => {
   const dispatch = useDispatch();
   const car = useSelector(selectCar);
+  const history = useNavigate();
   const params = useParams();
   useEffect(() => {
     const fetchACar = async () => {
@@ -19,6 +20,20 @@ const Car = () => {
     };
     fetchACar();
   }, []);
+
+  const handleDeleteBtnClick = async (event) => {
+    try {
+      event.target.disabled = true;
+      const res = await deleteCar(params.carId);
+      if (res) {
+        toast.success('Car deleted successfully');
+        history('/cars');
+      }
+    } catch (error) {
+      event.target.disabled = false;
+      toast.error(error.message)
+    }
+  }
 
   return (
     <div className="d-block d-md-flex w-100 px-3">
@@ -45,6 +60,9 @@ const Car = () => {
             <span>{car?.duration}</span>
           </li>
         </ul>
+        <div className="d-flex justify-content-end mt-3">
+          <button onClick={handleDeleteBtnClick} role="button" type='button' className='btn btn-danger'>Delete</button>
+        </div>
       </div>
     </div>
   );
