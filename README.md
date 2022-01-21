@@ -9,9 +9,11 @@ This is a web application that enables users to book a reservation for a car.
 
 #### [DEMO LINK](https://zen-lamport-220477.netlify.app/)
 
-#### [Backend](https://github.com/vikitaotiz/travel-fast-backend/)
+#### [Backend Repo](https://github.com/vikitaotiz/travel-fast-backend/)
 
 #### [Api Documentation](https://travel-fast-bk.herokuapp.com/)
+
+#### [Backend Pull Request](https://github.com/vikitaotiz/travel-fast-backend/pull/11)
 
 ## Kanban board
 - [Kanban board link](https://github.com/vikitaotiz/travel-fast-frontend/projects/1)
